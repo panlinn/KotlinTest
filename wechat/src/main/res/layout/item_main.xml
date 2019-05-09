@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content">
+    <ImageView
+            android:id="@+id/main_img"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/weixin"
+            android:layout_width="80mm"
+            android:layout_height="80mm"/>
+    <TextView
+            android:id="@+id/main_tv"
+            android:textSize="30mm"
+            android:textColor="@android:color/black"
+            android:text="微信单聊"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>

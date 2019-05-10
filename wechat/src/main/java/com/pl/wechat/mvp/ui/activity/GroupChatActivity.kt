@@ -96,7 +96,7 @@ class GroupChatActivity : BaseActivity<GroupChatPresenter>(), GroupChatContract.
         dialog.setContentView(R.layout.dialog_group_chat_setting)
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
-        val window: Window? = dialog.window
+        val window = dialog.window
         window!!.setGravity(Gravity.BOTTOM)
         window.setWindowAnimations(R.style.DialogBottomAnim)
         val params: WindowManager.LayoutParams = window.attributes

@@ -44,9 +44,15 @@ import kotlinx.android.synthetic.main.activity_main.*
  * }
  * }
  */
-class MainActivity : BaseActivity<MainPresenter>(), MainContract.View {
-    var data :ArrayList<WeChatEntity> = ArrayList()
-    lateinit var adapterMain: AdapterMain
+class MainActivity : BaseActivity<MainPresenter>(), MainContract.View, AdapterMain.OnItemClickListener {
+    override fun onItemClick(position: Int) {
+        when (position) {
+            0 -> startActivity(Intent().setClass(this, GroupChatActivity::class.java))
+        }
+    }
+
+    private var data = ArrayList<WeChatEntity>()
+    private var adapterMain: AdapterMain? = null
     override fun setupActivityComponent(appComponent: AppComponent) {
         DaggerMainComponent //如找不到该类,请编译一下项目
             .builder()
@@ -63,13 +69,16 @@ class MainActivity : BaseActivity<MainPresenter>(), MainContract.View {
 
 
     override fun initData(savedInstanceState: Bundle?) {
-        data.add(WeChatEntity("微信单聊",R.mipmap.weixin))
-        data.add(WeChatEntity("微信群聊",R.mipmap.qunliao))
-        adapterMain = AdapterMain(this,data)
+        data.add(WeChatEntity("微信单聊", R.mipmap.weixin))
+        data.add(WeChatEntity("微信群聊", R.mipmap.qunliao))
+        adapterMain = AdapterMain(this, data)
         myRecyclerView.let {
-            it.layoutManager = GridLayoutManager(this,3)
+            it.layoutManager = GridLayoutManager(this, 3)
             it.adapter = adapterMain
         }
+        adapterMain!!.onItemClickListener = this;
+
+
     }
 
 
